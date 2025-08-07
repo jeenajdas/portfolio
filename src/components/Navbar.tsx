@@ -1,13 +1,10 @@
 import React from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-interface NavbarProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
+interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const scrollToSection = (sectionId: string) => {
@@ -49,31 +46,26 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-purple-400 transition-colors duration-300 hover:glow-text"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-purple-400 transition-colors duration-300"
               >
                 {item.name}
               </motion.button>
             ))}
-            <motion.button
+            
+            {/* Download CV Button */}
+            <motion.a
+              href="/resume.pdf"
+              download
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-blue-100 dark:bg-purple-900/50 text-blue-600 dark:text-purple-400 hover:bg-blue-200 dark:hover:bg-purple-800/50 transition-all duration-300"
+              className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
+              Download CV
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full bg-blue-100 dark:bg-purple-900/50 text-blue-600 dark:text-purple-400"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 dark:text-gray-300"
@@ -99,6 +91,15 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                 {item.name}
               </button>
             ))}
+
+            {/* Mobile CV Button */}
+            <a
+              href="/resume.pdf"
+              download
+              className="block w-full text-left px-4 py-2 text-blue-700 dark:text-purple-400 hover:underline"
+            >
+              Download CV
+            </a>
           </motion.div>
         )}
       </div>

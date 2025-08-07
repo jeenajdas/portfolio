@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Instagram, ArrowRight, Mail } from 'lucide-react';
 import { ReactTyped } from 'react-typed';
 import profileImg from '../assets/jeena.jpeg';
+
 
 const Hero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -13,9 +14,9 @@ const Hero: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Github, href: 'https://github.com/jeenajdas', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/jeena-j-das-94a4822a8', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:jeenajee80@gmail.com', label: 'Mail' },
   ];
 
   return (
@@ -45,7 +46,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.4 }}
             className="text-2xl lg:text-3xl font-semibold text-gray-800 dark:text-gray-300 mb-6"
           >
-            Full Stack Developer
+             A Passionate Full Stack Developer
           </motion.h2>
 
           <motion.div
@@ -90,14 +91,14 @@ const Hero: React.FC = () => {
             >
               View Projects <ArrowRight size={20} />
             </motion.button>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contact')}
               className="px-8 py-3 border-2 border-blue-700 dark:border-purple-400 text-blue-700 dark:text-purple-400 rounded-full font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white transition-all duration-300"
             >
               Contact Me
-            </motion.button>
+            </motion.button> */}
             <motion.a
               href="/resume.pdf"
               target="_blank"
@@ -138,13 +139,17 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex justify-center lg:justify-end"
         >
-          <motion.img
-            src={profileImg}
-            alt="Jeena J Das"
-            className="w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-full shadow-lg border-4 border-blue-700 dark:border-purple-400"
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.4 }}
-          />
+          <div className="relative">
+  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 blur-xl opacity-25" />
+  <motion.img
+    src={profileImg}
+    alt="Jeena J Das"
+    className="relative w-72 h-72 lg:w-96 lg:h-96 object-cover rounded-full shadow-xl border-4 border-blue-700 dark:border-purple-400"
+    whileHover={{ scale: 1.03 }}
+    transition={{ duration: 0.4 }}
+  />
+</div>
+
         </motion.div>
       </div>
     </section>

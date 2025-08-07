@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Linkedin, LinkedinIcon } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,16 +10,37 @@ const Contact: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to a backend service
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://formspree.io/f/xldlogwy", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          message: ""
+        });
+      }, 3000);
+    } else {
+      console.error("Form submission failed.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -32,19 +53,19 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'jeena.j.das@email.com',
-      href: 'mailto:jeena.j.das@email.com'
+      value: 'jeenajee80@gmail.com',
+      href: 'mailto:jeenajee80@gmail.com'
     },
     {
-      icon: Phone,
-      title: 'Phone',
-      value: '+91 9876543210',
-      href: 'tel:+919876543210'
+      icon: LinkedinIcon,
+      title: 'LinkedIn',
+      value: 'linkedin.com',
+      href: 'https://www.linkedin.com/in/jeena-j-das-94a4822a8'
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Kerala, India',
+      value: ' Trivandrum Kerala, India',
       href: '#'
     }
   ];
