@@ -1,22 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [
     {
       title: 'EasyTrip – Bus Ticket Booking App',
       description: 'A Full-stack bus ticket booking system with seat selection, booking flow, and QR-coded PDF tickets. Built with Spring Boot + React.Admin dashboard provides control over routes, users, and revenue reporting.',
-      tech: ['Java', 'Spring Boot', 'React.js', 'iText', 'JWT','MySQL'],
+      tech: [ 'Java', 'Spring Boot', 'React.js', 'iText', 'JWT','MySQL'],
       github: 'https://github.com/jeenajdas/bus-ticket-booking',
       image: 'https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg?auto=compress&cs=tinysrgb&w=800',
     },
     {
-      title: 'Finora – Expense Tracker',
-      description: 'A personal finance management tool to track expenses, visualize data,set monthly budgets, and view spending insights with charts. Built with Spring Boot & React. Includes JWT auth and email verification.',
-      tech: ['Java', 'Spring Boot', 'React.js', 'Chart.js', 'Tailwind CSS', 'MySQL'],
+      title: 'Expense Tracker',
+      description: 'A responsive personal finance app with authentication to track expenses, set budgets, and analyze spending with interactive charts. Built using React, Tailwind CSS, and Chart.js.',
+      tech: ['React.js', 'Chart.js', 'Tailwind CSS', ],
       
-      github: 'https://github.com/jeenajdas/finora-expense-tracker',
+      github: 'https://github.com/jeenajdas/expense-tracker',
+      live: 'https://expense-tracker-taupe-three-38.vercel.app/', 
       image: 'https://images.pexels.com/photos/4386375/pexels-photo-4386375.jpeg?auto=compress&cs=tinysrgb&w=800',
     },
     
@@ -118,6 +119,19 @@ const Projects: React.FC = () => {
                     <Github size={16} />
                     <span className="text-sm">Code</span>
                   </motion.a>
+                  {project.live && (
+                    <motion.a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                    >
+                      <ExternalLink size={16} />
+                      <span className="text-sm">Live</span>
+                    </motion.a>
+                  )}
                 </div>
               </div>
             </motion.div>

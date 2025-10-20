@@ -91,14 +91,7 @@ const Hero: React.FC = () => {
             >
               View Projects <ArrowRight size={20} />
             </motion.button>
-            {/* <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 border-2 border-blue-700 dark:border-purple-400 text-blue-700 dark:text-purple-400 rounded-full font-semibold hover:bg-blue-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white transition-all duration-300"
-            >
-              Contact Me
-            </motion.button> */}
+            
             <motion.a
               href="/resume.pdf"
               target="_blank"
